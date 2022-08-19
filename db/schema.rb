@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220813122856) do
+ActiveRecord::Schema.define(version: 20220819203930) do
 
   create_table "applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.integer  "application_id"
-    t.string   "application_name"
+    t.string   "name",                default: "", null: false
     t.integer  "chat_count"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "application_token", limit: 30
-    t.index ["application_token"], name: "index_applications_on_application_token", unique: true, using: :btree
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["name"], name: "index_applications_on_name", unique: true, using: :btree
   end
 
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
