@@ -6,7 +6,7 @@ class V1::ApplicationsController < ApplicationController
     def create
         @application = Application.new(application_params)
         @application.save
-        render json: @application.as_json(only:[:application_name,:application_token]), status: :created
+        render json: @application.as_json(only:[:name,:authentication_token]), status: :created
     end
     def destory
         @application = Application.where(id:params[:id]).first
@@ -25,6 +25,6 @@ class V1::ApplicationsController < ApplicationController
     
     private 
     def application_params
-        params.require(:application).permit(:application_name)
+        params.require(:application).permit(:name)
     end
 end
