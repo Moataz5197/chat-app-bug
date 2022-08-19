@@ -1,7 +1,7 @@
 class V1::ApplicationsController < ApplicationController
     def index
         @applications = Application.all
-        render json: @applications.as_json(only:[:application_name,:application_token]), status: :ok
+        render json: @applications.as_json(only:[:name,:authentication_token]), status: :ok
     end
     def create
         @application = Application.new(application_params)
