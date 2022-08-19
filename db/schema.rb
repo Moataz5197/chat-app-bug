@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220819203930) do
+ActiveRecord::Schema.define(version: 20220819210325) do
 
   create_table "applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.integer  "application_id"
-    t.string   "name",                default: "", null: false
+    t.string   "name",                            default: "", null: false
     t.integer  "chat_count"
     t.datetime "remember_created_at"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_applications_on_authentication_token", unique: true, using: :btree
     t.index ["name"], name: "index_applications_on_name", unique: true, using: :btree
   end
 
