@@ -4,7 +4,6 @@ class DeviseCreateApplications < ActiveRecord::Migration[5.0]
   def change
     create_table :applications do |t|
       ## Database authenticatable
-      t.integer :application_id
       t.string :name,              null: false, default: ""
       t.integer :chat_count ,      unique: true
       #t.string :encrypted_password, null: false, default: ""

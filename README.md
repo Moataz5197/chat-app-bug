@@ -54,6 +54,8 @@ nested resources
 
 race condition and app logic :
 
+- current implementation of chat_count and chat_number does not support concurrency and may inflict problems to be compared with the other count (messages_count).
+
 - the most raced resource will be messages_count as concurrent requests will affect the true value for this shared col so i will have a persistent queue handled by redis to store messages in queue by a worker (sidekiq) most probably and serve it in order to database with a delayed time frame then the system will give a persistent messages_count by the call of each create request so it can be served rapidly
 
 so logic goes as follows
@@ -62,4 +64,6 @@ so logic goes as follows
 
 2-when receiving create message start incrementing in redis and queuing messages to be persistent by a worker
 
--- i thought of doing the same to the chat_count but i called it off as the no of messages to be counted is significantly higher than chat and this what will be raced .
+- i thought of doing the same to the chat_count but i called it off as the no of messages to be counted is significantly higher than chat and this what will be raced .
+
+- i did not implement update - show for chat as i think they 're useless in this case.
