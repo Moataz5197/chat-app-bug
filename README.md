@@ -67,3 +67,5 @@ so logic goes as follows
 - i thought of doing the same to the chat_count but i called it off as the no of messages to be counted is significantly higher than chat and this what will be raced .
 
 - i did not implement update - show for chat as i think they 're useless in this case.
+
+- Elastic search container is not working properly so i commented it out i could not fix the bugs before the deadline ... so sorry for that but the way i think of it as a routine worker (maybe sidekiq-cron) to run elastic indexing every 30 mins to index messages then searching will be easier...

@@ -16,7 +16,7 @@ class V1::ChatsController < ApplicationController
                 @application.chat_count += 1 
                 @application.save
                 @chat.save
-                render json: @chat.as_json(only:[:chat_number]), status: :ok
+                render json: @application.as_json(only:[:chat_count]), status: :created
 
             else
 
@@ -24,7 +24,7 @@ class V1::ChatsController < ApplicationController
                 @application.chat_count = 1
                 @application.save
                 @chat.save
-                render json: @chat.as_json(only:[:chat_number]), status: :ok
+                render json: @application.as_json(only:[:chat_count]), status: :created
             end
         else
             head(:unauthorized)

@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20220820005933) do
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.integer  "application_id"
     t.integer  "chat_number"
+    t.integer  "messages_count"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "messages_count"
     t.index ["application_id"], name: "index_chats_on_application_id", using: :btree
   end
 
