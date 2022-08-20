@@ -6,7 +6,7 @@ class DeviseCreateApplications < ActiveRecord::Migration[5.0]
       ## Database authenticatable
       t.integer :application_id
       t.string :name,              null: false, default: ""
-      t.integer :chat_count 
+      t.integer :chat_count ,      unique: true
       #t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
