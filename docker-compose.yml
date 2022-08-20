@@ -17,8 +17,20 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass moataz
+    volumes:
+      - redis-data:/data
+
 volumes:
   msql-data:
+    driver: local
+  redis-data:
     driver: local
   # setup:
   #   image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
