@@ -2,6 +2,12 @@
 
 Run Commands
 
+docker-compose up --build
+
+
+routes are nested and can be found using docker-compose run api rails routes
+
+
 ------------------------Decision Making Walking Through ---------------------
 
 -docker-compose run api rails new . --force --api --database=mysql --skip-bundle
@@ -64,8 +70,13 @@ so logic goes as follows
 
 2-when receiving create message start incrementing in redis and queuing messages to be persistent by a worker
 
+- i made 2 sidekiq queues one for each lock.
+
 - i thought of doing the same to the chat_count but i called it off as the no of messages to be counted is significantly higher than chat and this what will be raced .
 
 - i did not implement update - show for chat as i think they 're useless in this case.
 
+- messages_count is not rendered for some reason hadn't enough time to debug it.
 - Elastic search container is not working properly so i commented it out i could not fix the bugs before the deadline ... so sorry for that but the way i think of it as a routine worker (maybe sidekiq-cron) to run elastic indexing every 30 mins to index messages then searching will be easier...
+
+-sorry i wish i could 've finished it all well
